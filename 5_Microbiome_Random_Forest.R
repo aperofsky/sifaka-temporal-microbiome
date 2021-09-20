@@ -16,13 +16,15 @@ library(pROC)
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
+## set your working directory to where files are located
 setwd(dir)
 
 #phyloseq object (kmnp2) 
 # raw ASV counts including singletons (will be removed)
 # marked individuals only
 load("Rdata/sifaka_allotus_phyloseq_openref_2016.RData")
+head(sample_data(kmnp2))
 #######################################################################
 ## Random Forest Analysis
 #######################################################################
@@ -49,7 +51,8 @@ length(unique(sample_data(red)$Name))#57
 ## ASVs in 5% of samples
 sites.prune <- filter_taxa(red, function(x) sum(x > 1) > (0.05*length(x)), prune=TRUE) 
 sites.prune#405
-
+sample_data(sites.prune)$Year  = as.factor(sample_data(sites.prune)$Year)
+sample_data(sites.prune)$Group = as.factor(sample_data(sites.prune)$Group)
 ### normalize sequencing depth
 kmnp.deseq <- phyloseq_to_deseq2(sites.prune, ~Group+Year) #convert phyloseq object to deseq2 object
 # calculate geometric means prior to estimate size factors

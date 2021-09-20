@@ -11,7 +11,7 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 library(phyloseq)
@@ -26,6 +26,8 @@ library(gtsummary)
 
 ## limit analysis to individuals within the same group
 df_dist_bw = readRDS("Rdata/imm_res_diss_df_lim.rds")
+head(df_dist_bw)
+names(df_dist_bw)
 ############################################################################################
 ## Figures 5 and S21: Resident-Recent Immigrant Microbial Dissimilarity
 ############################################################################################
@@ -53,6 +55,8 @@ imm_violin_wu=p2 +stat_compare_means(aes(label = ..p.signif..),method = "wilcox.
               background_grid(major="xy")
 
 group_tenure = readRDS("Rdata/imm_group_tenure_df_lim.rds")
+head(group_tenure)
+names(group_tenure)
 
 ## limit to samples collected within two weeks of each other
 ind_df = group_tenure %>%
@@ -78,7 +82,9 @@ rec_imm_wu <- ggplot(ind_df%>% filter(tenure_mo<=12), aes(x=tenure_mo, y=w_unifr
 rec_imm_wu
 
 combined_group_tenure_bc = plot_grid(imm_violin_bc,rec_imm_bc,labels = c("a","b"))
+combined_group_tenure_bc
 save_plot(combined_group_tenure_bc,filename = "figures/Fig5_bray_curtis_group_tenure_vs_microbiome_diss.pdf",base_width = 10,base_height = 5)
+save_plot(combined_group_tenure_bc,filename = "figures/Fig5_bray_curtis_group_tenure_vs_microbiome_diss.png",base_width = 10,base_height = 5,dpi=600)
 
 combined_group_tenure_wu = plot_grid(imm_violin_wu,rec_imm_wu,labels = c("a","b"))
 save_plot(combined_group_tenure_wu,filename = "figures/SFig21_weighted_unifrac_group_tenure_vs_microbiome_diss.pdf",base_width = 10,base_height = 5)
@@ -110,9 +116,12 @@ ind_df = ind_df%>%
   rowwise() %>%      # for each row
   mutate(name_pairs = paste(sort(c(as.character(Name1), as.character(Name2))), collapse = "_"))
   
-ind_df%>% filter(tenure_mo<=12)%>%distinct(name_pairs)%>%nrow()#23
-ind_df%>% filter(tenure_year>=1 & tenure_year<6) %>%distinct(name_pairs)%>%nrow()#45
-
+recent = ind_df%>% filter(tenure_mo<=12)
+recent %>%distinct(name_pairs)%>%nrow()#23
+length(union(unique(recent$iso1),unique(recent$iso2)))#65
+past = ind_df %>% filter(tenure_year>=1 & tenure_year<6) 
+past %>%distinct(name_pairs)%>%nrow()#45
+length(union(unique(past$iso1),unique(past$iso2)))#172
 ############################################################################################
 ## Beta GLMMs: Resident - Recent Immigrant Microbial Dissimilarity vs Group Tenure
 ############################################################################################

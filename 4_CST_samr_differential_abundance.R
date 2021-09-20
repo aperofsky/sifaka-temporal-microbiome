@@ -21,7 +21,7 @@ library(RColorBrewer)
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 ## import phyloseq objects
@@ -30,13 +30,13 @@ setwd(dir)
 # normalized sequence counts, limited to ASVs shared across at least two samples 
 ## marked individuals only with sample CST assignments
 load("Rdata/sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData")
+head(sample_data(kmnp_trimmed))
 
 #phyloseq object (kmnp2) 
 # raw ASV counts including singletons; required for samr analyses
 # marked individuals only
 load("Rdata/sifaka_allotus_phyloseq_openref_2016.RData")
-sample_data(kmnp2)
-sample_data(kmnp_trimmed)
+head(sample_data(kmnp2))
 
 ## merge so that samples with raw ASV counts have CST assignments
 kmnp_cst=kmnp_trimmed

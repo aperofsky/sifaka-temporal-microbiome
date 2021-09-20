@@ -10,7 +10,7 @@ graphics.off()
 
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 library(phyloseq)
@@ -27,7 +27,7 @@ library(cowplot)
 both_beh = readRDS("Rdata/PSI_vs_microbiome_df_lim.rds")
 nrow(both_beh)#199
 length(unique(both_beh$Name))#12
-
+head(both_beh)
 ####################################################################
 ## Beta GLMMs: grooming PSI and proximity PSI vs within host turnover
 ####################################################################
@@ -89,6 +89,7 @@ full_groom
 
 combined_psi_plots = plot_grid(full_prox,full_groom,nrow=1,labels=c("a","b"))
 save_plot(combined_psi_plots,filename = "figures/Fig6_combined_years_psi_plots.pdf",base_width = 12,base_height = 6)
+save_plot(combined_psi_plots,filename = "figures/Fig6_combined_years_psi_plots.png",dpi=600,base_width = 12,base_height = 6)
 
 # ## individual seasonal comparisons
 # q = ggplot(both_beh,aes(x=prox_PSI,y=bray_curtis))+

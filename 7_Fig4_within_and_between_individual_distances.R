@@ -7,7 +7,8 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
+## set your working directory to where files are located
 setwd(dir)
 
 library(ggplot2)
@@ -19,6 +20,7 @@ library(ggpubfigs)
 
 red_df = readRDS("Rdata/within_and_bw_host_df_lim.rds")
 head(red_df)
+names(red_df)
 #######################################################################
 ## Figure 4: within and between individual pairwise distances, within and across years
 #######################################################################
@@ -75,6 +77,7 @@ p <- ggplot(red_df,aes(x=Value,y=bray_curtis,fill=Value))+
   theme(plot.title = element_text(hjust = 0.5))
 p
 save_plot(p, filename = "figures/Fig4_individual_vs_group_and_non_group_members_pairwise_comparisons_all_years.pdf",base_width = 12,base_height = 5)
+save_plot(p, filename = "figures/Fig4_individual_vs_group_and_non_group_members_pairwise_comparisons_all_years.png",dpi=600,base_width = 12,base_height = 5)
 
 #### weighted unifrac
 

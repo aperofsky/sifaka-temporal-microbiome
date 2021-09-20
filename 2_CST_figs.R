@@ -7,7 +7,7 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 library(phyloseq)
@@ -32,7 +32,7 @@ library(pals)
 ## marked individuals only 
 load("Rdata/sifaka_trimmed_phyloseq_normalized_dada2.RData") #phyloseq object: kmnp_trimmed (beta diversity, shared OTUs)
 kmnp_trimmed
-sample_names(kmnp_trimmed)
+head(sample_data(kmnp_trimmed))
 length(unique(sample_data(kmnp_trimmed)$Name))
 #######################################################################
 ## Community state type (CST) analysis
@@ -88,21 +88,13 @@ p = fviz_gap_stat(gskmn,
 p
 save_plot(p,filename = "figures/SFig11_Bray_Curtis_PAM_clusters.pdf",base_width = 5, base_height = 4)##supplementary figure
 
-## try first six eigenvalues as a sensitivity analysis
-# gskmn2 = clusGap(x[, 1:6], FUN=pam1, K.max = 20, B = 100)
-# plot_clusgap(gskmn2)
-# 
-# # visualize optimal number of clusters 
-# p = fviz_gap_stat(gskmn2, 
-#                   maxSE = list(method = "Tibs2001SEmax"))+ggtitle("") #7 clusters
-# p # also 7 clusters
-
 ## pam clustering with k = 7
 set.seed(123)
 km.res <- pam(ord$vectors[,1:7], k=7)
 head(km.res$cluster, 20)
 sample_data(kmnp_trimmed)$CST <- as.factor(km.res$cluster)  # add cst column to sample data 
 levels(sample_data(kmnp_trimmed)$CST)<- c("1","2","3","5","4","6","7") # make sure cluster order puts more similar clusters next to each other
+
 
 #save normalized phyloseq object with CST assignments added
 save(kmnp_trimmed, file= "Rdata/sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData")
@@ -232,6 +224,7 @@ combined_cst = plot_grid(p+theme(legend.position = "none"),p4+theme(legend.posit
 combined_cst_pcoa = plot_grid(cst_ord,combined_cst,nrow=2,rel_heights = c(1.4,4),labels = c("a",""))
 combined_cst_pcoa
 save_plot(combined_cst_pcoa,filename = "figures/Fig3_combined_cst_plots_pcoa.pdf",base_width = 16,base_height = 18)
+save_plot(combined_cst_pcoa,filename = "figures/Fig3_combined_cst_plots_pcoa.png",dpi=600,base_width = 16,base_height = 18)
 
 #######################################################################
 ##  Fig S10: CST assignments for individual animals

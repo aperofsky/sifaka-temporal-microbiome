@@ -11,7 +11,7 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 library(ggplot2)
@@ -29,6 +29,7 @@ library(ggpubr)
 
 load("Rdata/pairwise_predictors_same_ind_lim.RData")#df_dist_same_ind 
 head(df_dist_same_ind_lim)
+names(df_dist_same_ind_lim)
 
 ## limit to Groups I to V, samples more than 5 days apart
 df_dist_same_ind_red = df_dist_same_ind_lim %>%

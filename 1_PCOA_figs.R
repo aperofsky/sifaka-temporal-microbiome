@@ -7,7 +7,7 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
 setwd(dir)
 
 library(dplyr)
@@ -30,8 +30,8 @@ library(ape)
 ## normalized sequence counts, limited to ASVs shared across at least two samples 
 ## marked individuals only 
 load("Rdata/sifaka_trimmed_phyloseq_normalized_dada2.RData") #phyloseq object: kmnp_trimmed (beta diversity, shared OTUs)
-length(unique(sample_data(kmnp_trimmed)$Name))#58
 head(sample_data(kmnp_trimmed))
+length(unique(sample_data(kmnp_trimmed)$Name))#58
 #######################################################################
 ## Principal Coordinates Analysis
 #######################################################################
@@ -146,7 +146,9 @@ q <- plot_ordination(subset_marked, ord, color="Year") +
 q
 
 combined = plot_grid(p,q,nrow=1,labels=c("a","b"))
+combined
 save_plot(combined,filename = "figures/Fig1_bray_curtis_pcoa_year.pdf",base_width = 10,base_height = 5)
+save_plot(combined,filename = "figures/Fig1_bray_curtis_pcoa_year.png",dpi=600,base_width = 10,base_height = 5)
 #######################################################################
 ## Figure 2 BC PCoA by social group (Groups I to VI only)
 #######################################################################
@@ -172,10 +174,18 @@ p = ggplot(df,aes(x=Axis.1,y=Axis.2))+
         legend.background = element_blank())
 p
 
+
+# Propithecus verreauxi is listed as a critically endangered species. 
+# Publishing exact geographic coordinates could adversely impact conservation efforts or 
+# introduce unintended risk to the species. 
+# home range boundaries in Figure 2B are available upon reasonable request to the corresponding author
+
 ##combines PCoA and home range figures
-source("Fig2_home_range_maps.R")
-multi # combined pcoa and HR maps
-save_plot(multi,filename = "figures/Fig2_group_pcoa_home_range_plots_2012_2016.pdf",base_width = 15,base_height = 9)
+# source("Fig2_home_range_maps.R")
+# source("Fig2_home_range_maps_updated.R") 
+# multi # combined pcoa and HR maps
+# save_plot(multi,filename = "figures/Fig2_group_pcoa_home_range_plots_2012_2016.pdf",base_width = 15,base_height = 9)
+# save_plot(multi,filename = "figures/Fig2_group_pcoa_home_range_plots_2012_2016.png",dpi=600,base_width = 15,base_height = 9)
 
 #######################################################################
 ## Figure S6: WU PCoA by year

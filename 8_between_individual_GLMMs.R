@@ -10,7 +10,8 @@ graphics.off()
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
+## set your working directory to where files are located
 setwd(dir)
 
 library(tidyr)
@@ -28,6 +29,7 @@ df_both_beh = readRDS("Rdata/pairwise_social_behavior_and_microbiome_df_lim.rds"
 length(union(unique(df_both_beh$Name1),unique(df_both_beh$Name2)))#47
 length(union(unique(df_both_beh$iso1),unique(df_both_beh$iso2)))#253
 head(df_both_beh)
+names(df_both_beh)
 ####################################################################
 ## Beta GLMMs: predictors of between individual pairwise microbial dissimilarity
 ####################################################################
@@ -50,7 +52,6 @@ check_collinearity(social_related_glmm,component = "all")
 # Group                7.14         2.67      0.14
 # scale(Groom_PL_12mo) 8.02         2.83      0.12
 
-multicollinearity(social_related_glmm)
 ## VIFs are >3, so test social network covariates in separate models
 
 groom_only_glmm = glmmTMB(bray_curtis ~ scale(Groom_PL_12mo) + Related + (1|Year1)+(1|Name1)+ (1|Name2) + (1|Extraction),
@@ -66,7 +67,7 @@ summary(group_only_glmm)
 check_collinearity(group_only_glmm,component = "all")
 check_collinearity(prox_only_glmm,component = "all")
 check_collinearity(groom_only_glmm,component = "all")
-# VIFs are now <2
+# all VIFs are now <2
 
 
 model.sel(groom_only_glmm,prox_only_glmm,group_only_glmm,rank = AICc)
@@ -171,10 +172,6 @@ check_collinearity(diet_glmm,component = "all")
 #                     Term   VIF Increased SE Tolerance
 # scale(Prox_PL_12mo) 11.18         3.34      0.09
 # Group               16.67         4.08      0.06
-
-# summary(diet_glmm)
-# diet_dredge = MuMIn::dredge(diet_glmm)
-# diet_dredge
 
 diet_glmm = glmmTMB(bray_curtis ~ food_distance + Group + 
                        (1|Year1) +(1|Name1)+ (1|Name2)+ (1|Extraction),

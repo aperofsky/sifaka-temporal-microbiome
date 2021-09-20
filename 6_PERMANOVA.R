@@ -11,7 +11,8 @@ library(dplyr)
 ## set your working directory to where files are located
 ## input files are in "Rdata" folder
 ## figures are saved in "figures" folder
-dir <- "" ## set your working directory to where files are located
+dir <- "~/OneDrive - National Institutes of Health/NIH_Laptop_Updates_Post_Damage/Documents/Sifaka_KMNP_2016/Final_Code/Cleaned_Scripts/" ## set your working directory to where files are located
+## set your working directory to where files are located
 setwd(dir)
 
 ## import phyloseq object
@@ -19,7 +20,7 @@ setwd(dir)
 ## marked individuals only 
 load("Rdata/sifaka_trimmed_phyloseq_normalized_dada2.RData") #kmnp_trimmed (beta diversity, shared OTUs)
 kmnp_trimmed
-sample_data(kmnp_trimmed)
+head(sample_data(kmnp_trimmed))
 #######################################################################
 ## PERMANOVA
 #######################################################################
