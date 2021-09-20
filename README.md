@@ -50,8 +50,8 @@
 	- Uses a Beta GLMM to test the effects of social partner stability on within-host gut microbiome dynamics.
 
 ### Data dictionary
-	perofsky_2021_mol_ecol_data_dictionary.xlsx
-	Tabs define variables ("Column"), allowable values for variables ("Value"), whether variables contain sample or host information ("Category"), and variable definitions ("Explanation").
+- perofsky_2021_mol_ecol_data_dictionary.xlsx
+	- Tabs define variables ("Column"), allowable values for variables ("Value"), whether variables contain sample or host information ("Category"), and variable definitions ("Explanation").
 
 ### Folders
 
@@ -60,26 +60,26 @@
 #### The _Rdata_ folder contains all data inputs necessary to run the analysis scripts.
 
 ##### Pre-processed phyloseq objects with ASV count tables, ASV taxonomic classifications, ASV phylogenies, and sample metadata:
-	sifaka_allotus_phyloseq_openref_2016.RData (raw ASV counts)
-	sifaka_trimmed_phyloseq_normalized_dada2.RData (normalized ASV counts)
-	sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData (normalized ASV counts with CST assignments)
+sifaka_allotus_phyloseq_openref_2016.RData (raw ASV counts)
+sifaka_trimmed_phyloseq_normalized_dada2.RData (normalized ASV counts)
+sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData (normalized ASV counts with CST assignments)
 
-##### Input dataframes for analysis of immigrant-resident microbial dissimilarity
-	imm_group_tenure_df_lim.rds
-	imm_res_diss_df_lim.rds
+##### Input dataframes for analysis of immigrant-resident microbial dissimilarity:
+imm_group_tenure_df_lim.rds
+imm_res_diss_df_lim.rds
 
 ##### Input data frame for analysis of withinand between-individual microbial dissimilarity:
-	within_and_bw_host_df_lim.rds
+within_and_bw_host_df_lim.rds
 
 ##### Input data frame for analysis of between-individual microbial dissimilarity:
-	pairwise_social_behavior_and_microbiome_df_lim.rds
+pairwise_social_behavior_and_microbiome_df_lim.rds
 
 ##### Input data frame for analysis of within-host microbial dynamics:
-	pairwise_predictors_same_ind_lim.RData
+pairwise_predictors_same_ind_lim.RData
 
 ##### Input data frame for analysis of social partner stability and within-host gut microbiome dynamics:
-	PSI_vs_microbiome_df_lim.rds
+PSI_vs_microbiome_df_lim.rds
 
 ##### Outputs of random forest models:
-	sifaka_RF_fit_group_classification.Rdata
-	sifaka_RF_fit_year_classification.Rdata
+sifaka_RF_fit_group_classification.Rdata
+sifaka_RF_fit_year_classification.Rdata
