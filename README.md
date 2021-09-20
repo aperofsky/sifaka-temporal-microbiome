@@ -1,9 +1,9 @@
 
-# R scripts and inputs to reproduce the main statistical analyses and figures in Perofsky _et al._ 2021 "Social groups constrain the spatiotemporal dynamics of wild sifaka gut microbiomes." _Molecular Ecology_
+## R scripts and inputs to reproduce the main statistical analyses and figures in Perofsky _et al._ 2021 "Social groups constrain the spatiotemporal dynamics of wild sifaka gut microbiomes." _Molecular Ecology_
 ---
-## Microbiome and statistical analyses are performed with the statistical computing software [R](https://www.r-project.org/).
+### Microbiome and statistical analyses are performed with the statistical computing software [R](https://www.r-project.org/).
 
-### The analysis starts with pre-processed R phyloseq objects and other input dataframes and is split into eleven steps:
+#### The analysis is split into eleven steps:
 
 - 1_PCOA_figs.R
 
@@ -49,15 +49,15 @@
 
 	- Uses a Beta GLMM to test the effects of social partner stability on within-host gut microbiome dynamics.
 
----
 ## Data dictionary
-perofsky_2021_mol_ecol_data_dictionary.xlsx details and defines the variables ("Column"), allowable values for variables ("Value"), whether variables contain sample or host information ("Category"), and variable definitions ("Explanation"). 
----
+	- perofsky_2021_mol_ecol_data_dictionary.xlsx 
+	- For each input, the file defines variables ("Column"), allowable values for variables ("Value"), whether variables contain sample or host information ("Category"), and variable definitions ("Explanation"). 
+
 ## Folders
 
-### The figures folder contains the output of the analysis scripts.
+### The **figures** folder contains the output of the analysis scripts.
 
-### The Rdata folder contains all data inputs necessary to run the analysis scripts.
+### The **Rdata** folder contains all data inputs necessary to run the analysis scripts.
 
 #### Pre-processed phyloseq objects with ASV count tables, ASV taxonomic classifications, ASV phylogenies, and sample metadata:
 	- sifaka_allotus_phyloseq_openref_2016.RData (raw ASV counts)
@@ -68,13 +68,17 @@ perofsky_2021_mol_ecol_data_dictionary.xlsx details and defines the variables ("
 	- imm_group_tenure_df_lim.rds
 	- imm_res_diss_df_lim.rds
 
-#### Input data frame for analysis of within- and between-individual microbial dissimilarity (Figure 4 in manuscript):within_and_bw_host_df_lim.rds
+#### Input data frame for analysis of within- and between-individual microbial dissimilarity:
+	- within_and_bw_host_df_lim.rds
 
-#### Input data frame for analysis of between-individual microbial dissimilarity:pairwise_social_behavior_and_microbiome_df_lim.rds
+#### Input data frame for analysis of between-individual microbial dissimilarity:
+	- pairwise_social_behavior_and_microbiome_df_lim.rds
 
-#### Input data frame for analysis of within-host microbial dynamics:pairwise_predictors_same_ind_lim.RData
+#### Input data frame for analysis of within-host microbial dynamics:
+	- pairwise_predictors_same_ind_lim.RData
 
-#### Input data frame for analysis of social partner stability and within-host gut microbiome dynamics:PSI_vs_microbiome_df_lim.rds
+#### Input data frame for analysis of social partner stability and within-host gut microbiome dynamics:
+	- PSI_vs_microbiome_df_lim.rds
 
 #### Outputs of random forest models:
 	- sifaka_RF_fit_group_classification.Rdata
