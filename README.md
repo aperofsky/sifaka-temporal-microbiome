@@ -1,7 +1,7 @@
 
-## R scripts and inputs to reproduce the main statistical analyses and figures in Perofsky _et al._ 2021 "Social groups constrain the spatiotemporal dynamics of wild sifaka gut microbiomes." _Molecular Ecology_
+## R scripts and inputs to reproduce the main results and figures in Perofsky _et al._ 2021 "Social groups constrain the spatiotemporal dynamics of wild sifaka gut microbiomes." _Molecular Ecology_
 ---
-### Microbiome and statistical analyses are performed with the statistical computing software [R](https://www.r-project.org/).
+#### Microbiome and statistical analyses are performed with the statistical computing software [R](https://www.r-project.org/).
 
 #### The analysis is split into eleven steps:
 
@@ -60,26 +60,26 @@
 #### The _Rdata_ folder contains all data inputs necessary to run the analysis scripts.
 
 ##### Pre-processed phyloseq objects with ASV count tables, ASV taxonomic classifications, ASV phylogenies, and sample metadata:
-sifaka_allotus_phyloseq_openref_2016.RData (raw ASV counts)
-sifaka_trimmed_phyloseq_normalized_dada2.RData (normalized ASV counts)
-sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData (normalized ASV counts with CST assignments)
+- sifaka_allotus_phyloseq_openref_2016.RData (raw ASV counts)
+- sifaka_trimmed_phyloseq_normalized_dada2.RData (normalized ASV counts)
+- sifaka_trimmed_phyloseq_normalized_dada2_CSTs.RData (normalized ASV counts with CST assignments)
 
 ##### Input dataframes for analysis of immigrant-resident microbial dissimilarity:
-imm_group_tenure_df_lim.rds
-imm_res_diss_df_lim.rds
+- imm_group_tenure_df_lim.rds
+- imm_res_diss_df_lim.rds
 
 ##### Input data frame for analysis of withinand between-individual microbial dissimilarity:
-within_and_bw_host_df_lim.rds
+- within_and_bw_host_df_lim.rds
 
 ##### Input data frame for analysis of between-individual microbial dissimilarity:
-pairwise_social_behavior_and_microbiome_df_lim.rds
+- pairwise_social_behavior_and_microbiome_df_lim.rds
 
 ##### Input data frame for analysis of within-host microbial dynamics:
-pairwise_predictors_same_ind_lim.RData
+- pairwise_predictors_same_ind_lim.RData
 
 ##### Input data frame for analysis of social partner stability and within-host gut microbiome dynamics:
-PSI_vs_microbiome_df_lim.rds
+- PSI_vs_microbiome_df_lim.rds
 
 ##### Outputs of random forest models:
-sifaka_RF_fit_group_classification.Rdata
-sifaka_RF_fit_year_classification.Rdata
+- sifaka_RF_fit_group_classification.Rdata
+- sifaka_RF_fit_year_classification.Rdata
